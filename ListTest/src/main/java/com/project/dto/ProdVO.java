@@ -13,6 +13,7 @@ public class ProdVO {
 	private String prod_country;
 	private Timestamp reg_date;
 	private String reg_id;
+	private Timestamp prod_lastdate;
 	
 	
 	public int getIndex() {
@@ -74,6 +75,12 @@ public class ProdVO {
 	}
 	public void setReg_id(String reg_id) {
 		this.reg_id = reg_id;
+	}
+	public Timestamp getProd_lastdate() {
+		return prod_lastdate;
+	}
+	public void setProd_lastdate(Timestamp prod_lastdate) {
+		this.prod_lastdate = prod_lastdate;
 	}
 	
 	

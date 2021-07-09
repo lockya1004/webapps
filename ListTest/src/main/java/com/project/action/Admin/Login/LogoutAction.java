@@ -1,4 +1,4 @@
-package com.project.controller.action.Admin.Login;
+package com.project.action.Admin.Login;
 
 import java.io.IOException;
 
@@ -7,8 +7,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import com.project.controller.action.Action;
-import com.project.controller.action.ActionForward;
+import com.project.action.Action;
+import com.project.action.ActionForward;
 
 public class LogoutAction implements Action {
 

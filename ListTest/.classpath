@@ -13,8 +13,11 @@
 	</classpathentry>
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.web.container"/>
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.module.container"/>
-	<classpathentry kind="lib" path="C:/Users/appbutton/eclipse-workspace/ListTest/WebContent/WEB-INF/lib/mariadb-java-client-2.7.3.jar"/>
-	<classpathentry kind="lib" path="C:/Users/appbutton/eclipse-workspace/ListTest/WebContent/WEB-INF/lib/jstl.jar"/>
-	<classpathentry kind="lib" path="C:/Users/appbutton/eclipse-workspace/ListTest/WebContent/WEB-INF/lib/standard.jar"/>
+	<classpathentry kind="lib" path="C:/webapps/ListTest/WebContent/WEB-INF/lib/jstl.jar"/>
+	<classpathentry kind="lib" path="C:/webapps/ListTest/WebContent/WEB-INF/lib/standard.jar"/>
+	<classpathentry kind="lib" path="C:/webapps/ListTest/WebContent/WEB-INF/lib/commons-collections4-4.4.jar"/>
+	<classpathentry kind="lib" path="C:/webapps/ListTest/WebContent/WEB-INF/lib/commons-dbcp2-2.8.0.jar"/>
+	<classpathentry kind="lib" path="C:/webapps/ListTest/WebContent/WEB-INF/lib/commons-pool2-2.9.0.jar"/>
+	<classpathentry kind="lib" path="C:/webapps/ListTest/WebContent/WEB-INF/lib/mariadb-java-client-2.4.4.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>

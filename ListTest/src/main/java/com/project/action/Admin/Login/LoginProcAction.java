@@ -1,4 +1,4 @@
-package com.project.controller.action.Admin.Login;
+package com.project.action.Admin.Login;
 
 import java.io.IOException;
 import java.security.MessageDigest;
@@ -9,8 +9,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import com.project.controller.action.Action;
-import com.project.controller.action.ActionForward;
+import com.project.action.Action;
+import com.project.action.ActionForward;
 import com.project.dao.AdminDao;
 import com.project.dto.AdminVO;
 
@@ -27,8 +27,9 @@ public class LoginProcAction implements Action{
 			String id = request.getParameter("id");
 			String pw = request.getParameter("pass");
 			//비번 암호화
+				//System.out.println("암호화 전 :"+pw);
 				pw = encryptSHA256(pw);
-	
+				//System.out.println("암호화 : "+pw);
 				AdminDao dao = AdminDao.getInstance();
 				
 				int r = dao.userCheck(id, pw);

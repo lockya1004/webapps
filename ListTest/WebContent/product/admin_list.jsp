@@ -14,11 +14,13 @@
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+		 <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 		<script
 		  src="https://code.jquery.com/jquery-3.3.1.min.js"
 		  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
 		  crossorigin="anonymous"></script>		
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+		<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 		<script>
 			$(document).ready(function(){
 				$("#register").click(function(){
@@ -30,36 +32,101 @@
 						}
 					});
 				});
+			
 			});
 		</script>
 		<script>
-			function noBack(){
-				 window.history.forward();
+    	$(document).ready(function(){
+    		$("#form_insert").click(function(){
+    			
+    		});
+    		$("#proddate").datepicker({
+    			closeText: "닫기", 
+    			currentText: "오늘", 
+    			prevText: '이전 달', 
+    			nextText: '다음 달',
+    			dateFormat: 'yy-mm-dd',
+    			monthNamesShort: ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월'], 
+    			dayNamesMin: ['일', '월', '화', '수', '목', '금', '토'], 
+    			weekHeader: "주", 
+    			yearSuffix: '년'
+    		});
+    		
+    		 $('#datepicker').datepicker('setDate', 'today'); 
+    		 
+    		 if($(".ui-datepicker-calendar th span").attr("title")=="Satureday"){
+    			 $(this).css({color : "blue"});
+    			 
+    		 }else if($(".ui-datepicker-calendar th span").attr("title")=="Sunday"){
+    			 $(this).css({color : "red"});
+    		 }
+    		 
+    	});
+    
+    </script>
+   
+		<script>
+					
+			function search(){
+				var filter = $("#terms").val();
+				var keyword=$("#search_text").val();
+				if(filter == ""){
+					alert("검색조건을 선택해 주세요.");
+					return false;
+				} 
+				
+				if(keyword==""){
+					alert("검색 내용을 선택해 주세요.");
+					return false;
+				}
+				if(filter!=""&&keyword!=""){
+					$("#frm").submit();
+				}
+				
+			}
+			
+			function get_update_btn(id){
+				
+				 $.ajax({
+					url : "./admin?menu=produpform.do",
+					type:"POST",
+					data : {"serial":id},
+					success : function(data){
+						$("#myModal").html(data);
+					}
+				});
 			}
 		</script>
+		 
 		<link rel="stylesheet" href="./css/common.css">
 		<link rel="stylesheet" href="./css/list.css">
 	</head>
 <div class="black_bg"></div>
-<body onload="noBack();" onpageshow="if(event.persisted) noBack();" onunload="">
+
+<body>
 	<div style="text-align: right">
 		<a href="./admin?menu=logout.do">로그아웃</a>
 	</div>
 	<div id="list_box">
-		<h2>제품등록 현황</h2>
+		<h2><a href="./admin?menu=list.do">제품등록 현황</a></h2>
 		<div class="menu_wrap">
-			<div class="search">
-				<select name="terms">
-					<option value="">검색조건</option>
-					<option value="serial">시리얼번호</option>
-					<option value="nm">품명</option>
-					<option value="date">출고일</option>
-					<option value="local">지역</option>
-					<option value="country">국가</option>
-				</select>
-				<input type="text" placeholder="Search">
-				<button>검색</button>
+			<div class="search" style="line-height:22px;">
+				<form id="frm" action="./admin" method="get">
+					<input type="hidden" name="menu" value="listSearch.do">
+					<select name="filter" id="filter">
+						<option value="">검색조건</option>
+						<option value="serial">시리얼번호</option>
+						<option value="nm">품명</option>
+						<option value="date">출고일</option>
+						<option value="local">지역</option>
+						<option value="country">국가</option>
+					</select>
+					<input type="text" name="keyword" id="search_text" placeholder="Search">
+					<button id="Search_btn" onclick="search()">검색</button>
+				</form>
+			
 			</div><!--search-->
+
 			<div class="button">
 				<button class="register" id="register"  data-toggle="modal" data-target="#myModal">등록</button>
 				<button class="ham_bu">
@@ -80,6 +147,7 @@
 					<th>지역</th>
 					<th>국가</th>
 					<th>등록일</th>
+					<th>마지막 사용일</th>
 					<th>수정</th>
 				</tr>
 				<c:if test="${fn:length(prod_list) eq 0}">
@@ -101,7 +169,14 @@
 							<fmt:formatDate value="${lists.reg_date}"
 													pattern="yyyy-MM-dd" />
 						</td>
-						<td><a><img src="./img/icon_modify.png" alt="수정"></a><a><img src="./img/icon_delet.png" alt="삭제"></a></td>
+						<td>
+						<!-- 마지막 사용일 정해지면 그때 넣는 걸로... -->
+							<fmt:formatDate value="${lists.prod_lastdate}"
+													pattern="yyyy-MM-dd HH:mm:ss" /> 
+						</td>
+						<td><a><img src="./img/icon_modify.png" alt="수정" id="${lists.serial_num}" onclick="get_update_btn(this.id)" data-toggle="modal" data-target="#myModal"/></a>
+							<a><img src="./img/icon_delet.png" alt="삭제" data-toggle="modal" data-target="#myModal"></a>
+						</td>
 					</tr>
 					
 				</c:forEach>

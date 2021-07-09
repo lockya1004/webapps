@@ -10,13 +10,15 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.project.controller.action.Action;
-import com.project.controller.action.ActionForward;
-import com.project.controller.action.Admin.Login.LoginAction;
-import com.project.controller.action.Admin.Login.LoginProcAction;
-import com.project.controller.action.Admin.Login.LogoutAction;
-import com.project.controller.action.Admin.Prod.AdminListAction;
-import com.project.controller.action.Admin.Prod.AdminProdInsertForm;
+import com.project.action.Action;
+import com.project.action.ActionForward;
+import com.project.action.Admin.Login.LoginAction;
+import com.project.action.Admin.Login.LoginProcAction;
+import com.project.action.Admin.Login.LogoutAction;
+import com.project.action.Admin.Prod.AdminListAction;
+import com.project.action.Admin.Prod.AdminProdInsertForm;
+import com.project.action.Admin.Prod.AdminProdUpdate;
+import com.project.action.Admin.Prod.AdminProdUpdateForm;
 
 @WebServlet("/admin")
 public class AdminListServlet extends HttpServlet implements Servlet{
@@ -77,6 +79,27 @@ public class AdminListServlet extends HttpServlet implements Servlet{
 			 }
 		}else if(command.equals("prodform.do")) {
 			action = new AdminProdInsertForm();
+			try {
+				 forward=action.execute(request, response );
+			 } catch (Exception e) {
+				 e.printStackTrace();
+			 }
+		}else if(command.equals("produpform.do")) {
+			action = new AdminProdUpdateForm();
+			try {
+				 forward=action.execute(request, response );
+			 } catch (Exception e) {
+				 e.printStackTrace();
+			 }
+		}else if(command.equals("produp.do")) {
+			action = new AdminProdUpdate();
+			try {
+				 forward=action.execute(request, response );
+			 } catch (Exception e) {
+				 e.printStackTrace();
+			 }
+		}else if(command.equals("listSearch.do")) {
+			action = new AdminListAction();
 			try {
 				 forward=action.execute(request, response );
 			 } catch (Exception e) {

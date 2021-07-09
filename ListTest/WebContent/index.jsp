@@ -60,8 +60,33 @@ if(session.getAttribute("ok")!=null){
 		
 			});
 		</script>
+		<script>
+			function noBack(){
+				 window.history.forward();
+				/* //window 내 mouse 위치 여부를 체크하기 위한 변수 
+				window.innerDoc = false; //mouseover Event Listener 
+				window.addEventListener('mouseover', function(event) { 
+					window.innerDoc = true; 
+				}); // mouseout Event Listener 
+				window.addEventListener('mouseout', function(event) {
+					 window.innerDoc = false; 
+				}); // 바로 이전 페이지로 이동하는 것을 막기위해 history State 추가 
+				history.pushState({page:"?menu=list.do"}, 
+				document.title, location.pathname + '?menu=list.do'); //popstate Event Listener 
+				
+				window.addEventListener('popstate', function(event) { 
+					// history State 추가하여 페이지 이동 막음 (뒤로가기 막기) 
+					history.pushState({page:"historyChanged"}, document.title, location.pathname + '?menu=list.do'); // window 영역 밖에서 history가 변경 됐을경우 callbackFunction 실행 ( 뒤로가기 버튼 등 )
+				// 이전 POST 페이지에 정상적으로 데이터 재전송하여 SUBMIT 등 수행 
+					if (!window.innerDoc) { 
+						callbackFunction();	
+					} 
+				}); */
+
+			}
+		</script>
 	</head>
-<body onload="noBack();" onpageshow="if(event.persisted) noBack();" onunload="">
+<body  onload="noBack();" onpageshow="if(event.persisted) noBack();" onunload="">
 	<input type="hidden" id="msg" value="${message}"/>
 	<input type="hidden" id="loginUser" value="<%=session.getAttribute("ok")%>"/>
        <div id="login_box">

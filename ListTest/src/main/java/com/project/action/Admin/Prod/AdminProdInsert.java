@@ -1,4 +1,4 @@
-package com.project.controller.action.Admin.Prod;
+package com.project.action.Admin.Prod;
 
 import java.io.IOException;
 
@@ -8,8 +8,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import com.project.controller.action.Action;
-import com.project.controller.action.ActionForward;
+import com.project.action.Action;
+import com.project.action.ActionForward;
 
 
 //관리자가 제품등록 할 수 있도록 하는 action class
@@ -22,11 +22,7 @@ public class AdminProdInsert implements Action{
 		ActionForward forward = new ActionForward();
 		String url = "";
 		HttpSession hs =request.getSession();
-		if(hs.getAttribute("loginUser") == null) {
-			url="/index.jsp";
-		}else {
-			url="/product/admin_list.jsp";
-		}
+		
 		
 		 forward.setRedirect(false); 
 		 forward.setPath(url);

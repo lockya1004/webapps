@@ -1,4 +1,4 @@
-package com.project.controller.action;
+package com.project.action;
 
 import java.io.IOException;
 
