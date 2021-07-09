@@ -52,50 +52,54 @@
 				<form role="form" id="ins_frm">
 					<input type="hidden" id="mode" name="modes" value="${mode}"/>
 					
-			            <div class="form-group">		              
-			            	<c:choose>
-			            		<c:when test="${mode=='w'}">
-			            			<input type="text" class="form-control" name="usrname" id="usrname" placeholder="시리얼번호를 입력해주세요.">	
-			            		</c:when>
-			            		<c:otherwise>
-			            			<input type="text" class="form-control" name="usrname" id="usrname" placeholder="시리얼번호를 입력해주세요." value="${view.serial_num}" readonly="readonly">
-			            		</c:otherwise>
-			            	</c:choose>
-							<button style="width:110px;">번호 수정</button>
-			            </div>
-			            <div class="form-group">
-							<input type="text" class="form-control" id="prodnm" name ="prodnm" placeholder="품명을 입력해주세요." value="${view.prod_nm}">
-			            </div>
+	            	<c:choose>
+	            		<c:when test="${mode=='w'}">
+	            			<div class="form-group">		              
+	            				<input type="text" class="form-control" name="usrname" id="usrname" placeholder="시리얼번호를 입력해주세요.">
+	            				<button style="width:110px;">번호 수정</button>
+	            			</div>	
+	            		</c:when>
+	            		<c:otherwise>
+		            		<div class="form-group">
+		            			<input type="text" class="form-control" name="usrname" id="usrname" placeholder="시리얼번호를 입력해주세요." value="${view.serial_num}" readonly="readonly">
+		            			<button style="width:110px;">번호 수정</button>
+		            		</div>
+	            		</c:otherwise>
+	            	</c:choose>
+							
 			            
-			            <div class="form-group">
-							<input type="text" class="form-control" id="proddate" name="proddate" placeholder="출고일을 선택해주세요." value="${view.prod_date}">
-			            </div>
-			            <div class="form-group">
-							<input type="text" class="form-control" id="compnm"  name="compnm" placeholder="사용자이름을 입력해주세요." value="${view.comp_nm}">
-			            </div>
-			            <div class="form-group">
-							<input type="text" class="form-control" id="prodlocal"  name="prodlocal" placeholder="지역명을 입력해주세요." value="${view.prod_local}">
-			            </div>
-			            <div class="form-group">
-							<select class="form-control" id="prodcontry"  name="prodcontry">
-								<option value="">국가를 선택해 주세요.</option>
-								 <c:forEach items="${country_list}" var="lists">
-								 	<c:choose>
-								 		<c:when test="${mode=='u'&&view.prod_country != lists.country_nm}">
-								 			<option value="${lists.country_cd}" ><c:out value="${lists.country_nm}"></c:out></option>		
-								 		</c:when>
-								 		<c:when test="${mode=='u'&&view.prod_country == lists.country_nm}">
-								 			<option value="${lists.country_cd}" selected="selected"><c:out value="${lists.country_nm}"></c:out></option>
-								 		</c:when>
-								 		<c:otherwise>
-								 			<option value="${lists.country_cd}" ><c:out value="${lists.country_nm}"></c:out></option>
-								 		</c:otherwise>
-								 	</c:choose>
-									
-								</c:forEach>
-							</select>
-			            </div>
-		              
+		            <div class="form-group">
+						<input type="text" class="form-control" id="prodnm" name ="prodnm" placeholder="품명을 입력해주세요." value="${view.prod_nm}">
+		            </div>
+		            
+		            <div class="form-group">
+						<input type="text" class="form-control" id="proddate" name="proddate" placeholder="출고일을 선택해주세요." value="${view.prod_date}">
+		            </div>
+		            <div class="form-group">
+						<input type="text" class="form-control" id="compnm"  name="compnm" placeholder="사용자이름을 입력해주세요." value="${view.comp_nm}">
+		            </div>
+		            <div class="form-group">
+						<input type="text" class="form-control" id="prodlocal"  name="prodlocal" placeholder="지역명을 입력해주세요." value="${view.prod_local}">
+		            </div>
+		            <div class="form-group">
+						<select class="form-control" id="prodcontry"  name="prodcontry">
+							<option value="">국가를 선택해 주세요.</option>
+							 <c:forEach items="${country_list}" var="lists">
+							 	<c:choose>
+							 		<c:when test="${mode=='u'&&view.prod_country != lists.country_nm}">
+							 			<option value="${lists.country_cd}" ><c:out value="${lists.country_nm}"></c:out></option>		
+							 		</c:when>
+							 		<c:when test="${mode=='u'&&view.prod_country == lists.country_nm}">
+							 			<option value="${lists.country_cd}" selected="selected"><c:out value="${lists.country_nm}"></c:out></option>
+							 		</c:when>
+							 		<c:otherwise>
+							 			<option value="${lists.country_cd}" ><c:out value="${lists.country_nm}"></c:out></option>
+							 		</c:otherwise>
+							 	</c:choose>
+								
+							</c:forEach>
+						</select>
+		            </div>
 		        </form>
 			</div>
 			<div class="modal-footer">
