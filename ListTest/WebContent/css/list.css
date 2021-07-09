@@ -44,12 +44,12 @@ table tr img:hover{opacity:0.6; transition:all ease 0.8;}
 .close:hover{color:#fff !important;}
 .form-control{width:90%; display:ilnine-block; }
 .form-group:before{display:inline-block; content:""; width:30px; height:30px; vertical-align:middle; margin-right:8px;}
-.form-group:nth-child(0):before{background-image:url("../img/pop_icon01.png");}
-.form-group:nth-child(1):before{background-image:url("../img/pop_icon02.png");}
-.form-group:nth-child(2):before{background-image:url("../img/pop_icon03.png");}
-.form-group:nth-child(3):before{background-image:url("../img/pop_icon04.png");}
-.form-group:nth-child(4):before{background-image:url("../img/pop_icon05.png");}
-.form-group:nth-child(5):before{background-image:url("../img/pop_icon06.png");}
+.form-group:nth-child(1):before{background-image:url("../img/pop_icon01.png");}
+.form-group:nth-child(2):before{background-image:url("../img/pop_icon02.png");}
+.form-group:nth-child(3):before{background-image:url("../img/pop_icon03.png");}
+.form-group:nth-child(4):before{background-image:url("../img/pop_icon04.png");}
+.form-group:nth-child(5):before{background-image:url("../img/pop_icon05.png");}
+.form-group:nth-child(6):before{background-image:url("../img/pop_icon06.png");}
 .form-control{display:initial;}
 
 #usrname{width:70%;}
