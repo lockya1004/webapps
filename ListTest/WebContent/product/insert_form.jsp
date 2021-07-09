@@ -66,8 +66,6 @@
 		            		</div>
 	            		</c:otherwise>
 	            	</c:choose>
-							
-			            
 		            <div class="form-group">
 						<input type="text" class="form-control" id="prodnm" name ="prodnm" placeholder="품명을 입력해주세요." value="${view.prod_nm}">
 		            </div>
